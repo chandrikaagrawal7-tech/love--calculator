@@ -2,280 +2,290 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>love jobs | Elevate Your Career</title>
-    <meta name="description" content="The ultimate job portal and interview preparation platform for modern professionals.">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Quantum Love Calculator | AI Compatibility Matcher</title>
+    <meta name="description" content="Discover your cosmic and biological compatibility rating with this premium gamified Love Calculator. High-tech scanning, dramatic animations, and witty relationship breakdowns!">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="app">
-        <!-- Navigation -->
-        <nav class="navbar">
-            <div class="nav-container">
-                <div class="logo" id="home-trigger">
-                    <div class="logo-icon"></div>
-                    <span>love jobs</span>
+
+    <div class="app-container">
+        <!-- Floating Background Particles -->
+        <div class="bg-particles">
+            <div class="particle" style="top: 15%; left: 10%; width: 6px; height: 6px; animation-delay: 0s;"></div>
+            <div class="particle" style="top: 65%; left: 85%; width: 10px; height: 10px; animation-delay: 2s;"></div>
+            <div class="particle" style="top: 80%; left: 20%; width: 8px; height: 8px; animation-delay: 4s;"></div>
+            <div class="particle" style="top: 35%; left: 75%; width: 12px; height: 12px; animation-delay: 1s;"></div>
+            <div class="particle" style="top: 50%; left: 30%; width: 7px; height: 7px; animation-delay: 3s;"></div>
+            <div class="particle" style="top: 90%; left: 60%; width: 9px; height: 9px; animation-delay: 5s;"></div>
+        </div>
+
+        <!-- SVG Gradients for gauges -->
+        <svg style="width:0;height:0;position:absolute;" aria-hidden="true" focusable="false">
+            <defs>
+                <linearGradient id="score-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#ff2a85" />
+                    <stop offset="50%" stop-color="#8a2be2" />
+                    <stop offset="100%" stop-color="#00f5ff" />
+                </linearGradient>
+            </defs>
+        </svg>
+
+        <!-- Top Header -->
+        <header>
+            <div class="logo-area">
+                <i class="fa-solid fa-heart-pulse logo-icon"></i>
+                <span class="app-title">LOVE CALCULATOR</span>
+            </div>
+            <div class="gamified-stats">
+                <div class="stat-pill streak" title="Daily Streak">
+                    <i class="fa-solid fa-fire-flame-curved"></i>
+                    <span id="streak-count">5</span>
                 </div>
-                <div class="nav-links">
-                    <a href="#jobs" class="nav-link active" data-target="jobs-section">Jobs</a>
-                    <a href="#prep" class="nav-link" data-target="prep-section">Preparation</a>
-                    <a href="#resume" class="nav-link" data-target="resume-section">Resume Builder</a>
-                    <a href="#dashboard" class="nav-link" data-target="dashboard-section">Employer Portal</a>
+                <div class="stat-pill coins" title="Love Energy">
+                    <i class="fa-solid fa-bolt"></i>
+                    <span id="energy-count">100</span>
                 </div>
-                <div class="nav-actions">
-                    <button id="theme-toggle" class="btn-icon" aria-label="Toggle Theme" style="border: none; cursor: pointer; padding: 0.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 0.5rem;">
-                        <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                        </svg>
+                <div class="sound-toggle" id="sound-toggle-btn" title="Toggle Sound">
+                    <i class="fa-solid fa-volume-high" id="sound-icon"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Toast Notification -->
+        <div class="toast" id="toast-msg">
+            <i class="fa-solid fa-circle-info"></i>
+            <span id="toast-text">Notification</span>
+        </div>
+
+        <!-- Main Content Area -->
+        <main>
+            <!-- ================= SCREEN 1: HOME / INPUT ================= -->
+            <div class="screen home-screen active" id="screen-home">
+                <div class="hero-section">
+                    <div class="hero-image-container">
+                        <div class="hero-glow"></div>
+                        <img src="assets/heart.png" alt="3D Glossy Heart" class="hero-image">
+                    </div>
+                    <h1 class="hero-title">Love Calculator</h1>
+                    <p class="hero-subtitle">Enter two names to analyze your cosmic & biological compatibility rating.</p>
+                </div>
+
+                <div class="calculator-box">
+                    <div class="input-group">
+                        <label class="input-label" for="name1">
+                            <i class="fa-solid fa-user-astronaut"></i> First Person
+                        </label>
+                        <div class="input-wrapper">
+                            <input type="text" id="name1" class="name-input" placeholder="e.g. Romeo" autocomplete="off" maxlength="25">
+                            <i class="fa-regular fa-heart"></i>
+                        </div>
+                    </div>
+
+                    <div class="swap-container">
+                        <div class="swap-line"></div>
+                        <button class="swap-btn" id="swap-btn" title="Swap Names" aria-label="Swap Names">
+                            <i class="fa-solid fa-right-left"></i>
+                        </button>
+                    </div>
+
+                    <div class="input-group">
+                        <label class="input-label" for="name2">
+                            <i class="fa-solid fa-user-ninja"></i> Second Person
+                        </label>
+                        <div class="input-wrapper">
+                            <input type="text" id="name2" class="name-input" placeholder="e.g. Juliet" autocomplete="off" maxlength="25">
+                            <i class="fa-regular fa-heart"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="calc-btn" id="calc-btn">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> CALCULATE COMPATIBILITY
+                </button>
+
+                <div class="quick-match-section">
+                    <div class="section-header">
+                        <i class="fa-solid fa-bolt-lightning"></i> Trending Matches
+                    </div>
+                    <div class="chips-container">
+                        <div class="chip" data-name1="Taylor" data-name2="Travis"><i class="fa-solid fa-music"></i> Taylor & Travis</div>
+                        <div class="chip" data-name1="Barbie" data-name2="Ken"><i class="fa-solid fa-star"></i> Barbie & Ken</div>
+                        <div class="chip" data-name1="Zendaya" data-name2="Tom"><i class="fa-solid fa-film"></i> Zendaya & Tom</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= SCREEN 2: LOADING / SCANNING ================= -->
+            <div class="screen loading-screen" id="screen-loading">
+                <div class="radar-container">
+                    <div class="radar-glow"></div>
+                    <div class="radar-ring"></div>
+                    <div class="radar-ring-2"></div>
+                    <div class="loading-heart-container">
+                        <img src="assets/heart.png" alt="Pulsing Heart" class="loading-heart">
+                    </div>
+                </div>
+
+                <h2 class="loading-title">Analyzing Connection...</h2>
+                <div class="loading-text" id="loading-prompt">Calibrating astrological charts...</div>
+
+                <div class="progress-container">
+                    <div class="progress-bar" id="loading-progress"></div>
+                </div>
+            </div>
+
+            <!-- ================= SCREEN 3: RESULTS ================= -->
+            <div class="screen results-screen" id="screen-results">
+                <canvas id="confetti-canvas"></canvas>
+
+                <div class="match-header">
+                    <div class="match-subtitle">Cosmic Compatibility</div>
+                    <div class="match-names" id="result-names">Romeo & Juliet</div>
+                </div>
+
+                <div class="gauge-container">
+                    <svg class="score-circle" viewBox="0 0 180 180">
+                        <circle class="score-circle-bg" cx="90" cy="90" r="80"></circle>
+                        <circle class="score-circle-progress" id="score-gauge" cx="90" cy="90" r="80"></circle>
+                    </svg>
+                    <div class="gauge-content">
+                        <div class="score-number"><span id="score-val">0</span>%</div>
+                        <div class="score-label">Match Score</div>
+                    </div>
+                </div>
+
+                <div class="tier-badge" id="tier-badge">
+                    <i class="fa-solid fa-fire"></i> SOULMATES
+                </div>
+
+                <div class="verdict-card">
+                    <div class="verdict-title"><i class="fa-solid fa-quote-left"></i> Expert AI Verdict</div>
+                    <div class="verdict-text" id="verdict-desc">Analyzing the intricate web of your personalities...</div>
+                </div>
+
+                <div class="breakdown-container">
+                    <div class="breakdown-item">
+                        <div class="breakdown-header">
+                            <span class="breakdown-label"><i class="fa-solid fa-fire-flame-curved" style="color:#ff2a85"></i> Passion & Romance</span>
+                            <span class="breakdown-value" id="passion-val">0%</span>
+                        </div>
+                        <div class="breakdown-bar-bg">
+                            <div class="breakdown-bar-fill passion-fill" id="passion-bar"></div>
+                        </div>
+                    </div>
+
+                    <div class="breakdown-item">
+                        <div class="breakdown-header">
+                            <span class="breakdown-label"><i class="fa-solid fa-comments" style="color:#00f5ff"></i> Communication</span>
+                            <span class="breakdown-value" id="comm-val">0%</span>
+                        </div>
+                        <div class="breakdown-bar-bg">
+                            <div class="breakdown-bar-fill comm-fill" id="comm-bar"></div>
+                        </div>
+                    </div>
+
+                    <div class="breakdown-item">
+                        <div class="breakdown-header">
+                            <span class="breakdown-label"><i class="fa-solid fa-shield-heart" style="color:#8a2be2"></i> Trust & Loyalty</span>
+                            <span class="breakdown-value" id="trust-val">0%</span>
+                        </div>
+                        <div class="breakdown-bar-bg">
+                            <div class="breakdown-bar-fill trust-fill" id="trust-bar"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="result-actions">
+                    <button class="calc-btn" id="recalc-btn">
+                        <i class="fa-solid fa-rotate-left"></i> CALCULATE NEW MATCH
                     </button>
-                    <button id="login-btn" class="btn-secondary">Log In</button>
-                    <button id="signup-btn" class="btn-primary">Sign Up</button>
+                    <button class="btn-secondary" id="share-btn">
+                        <i class="fa-solid fa-share-nodes"></i> SHARE MATCH CARD
+                    </button>
                 </div>
+            </div>
+
+            <!-- ================= SCREEN 4: HISTORY ================= -->
+            <div class="screen history-screen" id="screen-history">
+                <div class="history-header">
+                    <h2 class="history-title"><i class="fa-solid fa-book-heart"></i> Match History</h2>
+                    <button class="clear-btn" id="clear-history-btn"><i class="fa-solid fa-trash-can"></i> Clear</button>
+                </div>
+
+                <div class="history-list" id="history-container">
+                    <!-- Dynamic history items go here -->
+                    <div class="empty-history">
+                        <i class="fa-solid fa-heart-circle-exclamation"></i>
+                        <p>No matches recorded yet. Calculate compatibility to start your history streak!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= SCREEN 5: DAILY ORACLE / GAMES ================= -->
+            <div class="screen games-screen" id="screen-games">
+                <div class="game-card">
+                    <div class="game-icon"><i class="fa-solid fa-crystal-ball"></i></div>
+                    <h3 class="game-title">Daily Love Oracle</h3>
+                    <p class="game-desc">Pull your personalized daily cosmic fortune and relationship advice card.</p>
+                    <button class="calc-btn" id="oracle-btn"><i class="fa-solid fa-sparkles"></i> PULL TODAY'S CARD</button>
+                    
+                    <div class="oracle-result" id="oracle-result">
+                        <div class="oracle-quote" id="oracle-quote">"The energy of the universe favors bold confessions today. Speak your truth."</div>
+                        <div class="oracle-author">- Cupid's Oracle</div>
+                    </div>
+                </div>
+
+                <div class="game-card">
+                    <div class="game-icon"><i class="fa-solid fa-dice"></i></div>
+                    <h3 class="game-title">Relationship Trivia</h3>
+                    <p class="game-desc">Test your love knowledge! What is the universal symbol of love and devotion?</p>
+                    <div style="display:flex; gap:10px; margin-top:16px;">
+                        <button class="btn-secondary trivia-btn" data-correct="false">🌹 Rose</button>
+                        <button class="btn-secondary trivia-btn" data-correct="true">💖 Heart</button>
+                        <button class="btn-secondary trivia-btn" data-correct="false">💍 Ring</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Bottom Navigation Bar -->
+        <nav class="bottom-nav">
+            <div class="nav-item active" data-tab="home">
+                <i class="fa-solid fa-heart"></i>
+                <span>Calculator</span>
+            </div>
+            <div class="nav-item" data-tab="history">
+                <i class="fa-solid fa-scroll"></i>
+                <span>History</span>
+            </div>
+            <div class="nav-item" data-tab="games">
+                <i class="fa-solid fa-gamepad"></i>
+                <span>Daily Games</span>
             </div>
         </nav>
 
-        <main class="content">
-            <!-- Jobs Section -->
-            <section id="jobs-section" class="app-section active">
-                <header class="section-header">
-                    <h1>Discover Your <span class="gradient-text">Next Chapter</span></h1>
-                    <p>Access exclusive opportunities at top-tier tech companies.</p>
-                    <div class="search-bar">
-                        <div class="input-group">
-                            <input type="text" placeholder="Job title, keywords..." id="job-search">
-                            <input type="text" placeholder="Location" id="location-search">
-                            <button class="btn-search">Search Jobs</button>
-                        </div>
-                    </div>
-                </header>
+        <!-- Share Modal Overlay -->
+        <div class="modal-overlay" id="share-modal">
+            <div class="share-card">
+                <div class="close-modal" id="close-modal-btn"><i class="fa-solid fa-xmark"></i></div>
+                <div class="share-card-logo"><i class="fa-solid fa-heart-pulse" style="color:var(--primary-color)"></i></div>
+                <h3 class="share-card-title">LOVE CALCULATOR MATCH</h3>
+                <div class="share-card-names" id="share-modal-names">Romeo & Juliet</div>
+                <div class="share-card-score" id="share-modal-score">88%</div>
+                <div class="share-card-badge" id="share-modal-badge">🔥 SOULMATES</div>
                 
-                <div class="jobs-layout">
-                    <aside class="filters">
-                        <h3>Filters</h3>
-                        <div class="filter-group">
-                            <label>Experience Level</label>
-                            <div class="checkbox-group">
-                                <label><input type="checkbox"> Entry Level</label>
-                                <label><input type="checkbox"> Mid Level</label>
-                                <label><input type="checkbox"> Senior</label>
-                            </div>
-                        </div>
-                        <div class="filter-group">
-                            <label>Job Type</label>
-                            <div class="checkbox-group">
-                                <label><input type="checkbox"> Remote</label>
-                                <label><input type="checkbox"> On-site</label>
-                                <label><input type="checkbox"> Hybrid</label>
-                            </div>
-                        </div>
-                    </aside>
-                    <div class="job-grid" id="job-list">
-                        <!-- Jobs will be injected here -->
-                    </div>
+                <div class="share-options">
+                    <div class="share-btn-circle whatsapp" id="share-wa" title="Share on WhatsApp"><i class="fa-brands fa-whatsapp"></i></div>
+                    <div class="share-btn-circle twitter" id="share-tw" title="Share on X"><i class="fa-brands fa-x-twitter"></i></div>
+                    <div class="share-btn-circle copy" id="share-cp" title="Copy Link"><i class="fa-solid fa-copy"></i></div>
                 </div>
-            </section>
-
-            <!-- Preparation Section -->
-            <section id="prep-section" class="app-section">
-                <header class="section-header">
-                    <h1>Master the <span class="gradient-text">Interview</span></h1>
-                    <p>Expert-curated resources to help you ace your dream role.</p>
-                </header>
-                <div class="prep-grid">
-                    <div class="prep-card">
-                        <div class="prep-icon coding"></div>
-                        <h3>Technical Preparation</h3>
-                        <p>DSA, System Design, and Frontend fundamentals.</p>
-                        <button class="btn-text">Explore Track &rarr;</button>
-                    </div>
-                    <div class="prep-card">
-                        <div class="prep-icon behavioral"></div>
-                        <h3>Behavioral Mastery</h3>
-                        <p>Learn the STAR method and communication skills.</p>
-                        <button class="btn-text">Explore Track &rarr;</button>
-                    </div>
-                    <div class="prep-card">
-                        <div class="prep-icon mock"></div>
-                        <h3>Mock Interviews</h3>
-                        <p>Practice with AI-driven simulated interviews.</p>
-                        <button class="btn-text">Schedule Now &rarr;</button>
-                    </div>
-                </div>
-                
-                <div id="prep-details" class="prep-details-panel" style="display: none;">
-                    <div class="panel-header">
-                        <button id="close-prep" class="btn-icon">&larr; Back to Hub</button>
-                        <h2 id="prep-title">Technical Track</h2>
-                    </div>
-                    <div class="questions-list" id="questions-list">
-                        <!-- Questions injected here -->
-                    </div>
-                </div>
-            </section>
-
-            <!-- Resume Section -->
-            <section id="resume-section" class="app-section">
-                <header class="section-header">
-                    <h1>AI-Powered <span class="gradient-text">Resume Analysis</span></h1>
-                    <p>Optimize your resume for ATS and hiring managers.</p>
-                </header>
-                <div class="resume-container">
-                    <div class="resume-upload">
-                        <div class="upload-area">
-                            <div class="upload-icon"></div>
-                            <p>Drag & drop your resume or <span>browse files</span></p>
-                            <small>Supported formats: PDF, DOCX (Max 5MB)</small>
-                        </div>
-                    </div>
-                    <div class="resume-preview-panel">
-                        <div class="score-card">
-                            <div class="score-circle">
-                                <span class="score-value">85</span>
-                                <span class="score-label">ATS Score</span>
-                            </div>
-                            <ul class="score-tips">
-                                <li>✓ Strong action verbs used</li>
-                                <li>✓ Clean layout detected</li>
-                                <li>! Missing 3 key industry keywords</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Employer Dashboard Section -->
-            <section id="dashboard-section" class="app-section">
-                <header class="section-header">
-                    <h1>Employer <span class="gradient-text">Dashboard</span></h1>
-                    <p>Manage your listings and track candidate progress.</p>
-                </header>
-                <div class="dashboard-grid">
-                    <div class="stat-cards">
-                        <div class="stat-card">
-                            <span class="stat-label">Active Jobs</span>
-                            <span class="stat-value">12</span>
-                        </div>
-                        <div class="stat-card">
-                            <span class="stat-label">New Applicants</span>
-                            <span class="stat-value">48</span>
-                        </div>
-                        <div class="stat-card">
-                            <span class="stat-label">Interviews Today</span>
-                            <span class="stat-value">5</span>
-                        </div>
-                    </div>
-                    <div class="dashboard-content">
-                        <div class="content-card">
-                            <h3>Post a New Job</h3>
-                            <div class="post-job-form">
-                                <input type="text" placeholder="Job Title">
-                                <input type="text" placeholder="Salary Range">
-                                <textarea placeholder="Job Description"></textarea>
-                                <button class="btn-primary">Publish Listing</button>
-                            </div>
-                        </div>
-                        <div class="content-card">
-                            <h3>Recent Applicants</h3>
-                            <div class="applicant-list">
-                                <div class="applicant-item">
-                                    <div class="applicant-info">
-                                        <strong>Alex Rivera</strong>
-                                        <span>Senior React Developer</span>
-                                    </div>
-                                    <div class="applicant-status success">Matched 92%</div>
-                                </div>
-                                <div class="applicant-item">
-                                    <div class="applicant-info">
-                                        <strong>Sarah Chen</strong>
-                                        <span>UX Designer</span>
-                                    </div>
-                                    <div class="applicant-status warning">Matched 78%</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <!-- Application Modal -->
-        <div id="apply-modal" class="modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h2>Apply for <span id="modal-job-title">Position</span></h2>
-                    <button class="close-modal">&times;</button>
-                </div>
-                <form class="apply-form" id="apply-form">
-                    <div class="form-group">
-                        <label>Full Name</label>
-                        <input type="text" required placeholder="John Doe">
-                    </div>
-                    <div class="form-group">
-                        <label>Email Address</label>
-                        <input type="email" required placeholder="john@example.com">
-                    </div>
-                    <div class="form-group">
-                        <label>Resume</label>
-                        <input type="file" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Why are you a good fit?</label>
-                        <textarea placeholder="Tell us about your experience..."></textarea>
-                    </div>
-                    <button type="submit" class="btn-primary w-full">Submit Application</button>
-                </form>
-                <div id="success-msg" class="success-message" style="display: none;">
-                    <h3>Application Sent!</h3>
-                    <p>The company will review your profile shortly.</p>
-                </div>
+                <div class="share-tip">Screenshot this card or copy results to share with friends!</div>
             </div>
         </div>
-
-        <!-- Auth Modal -->
-        <div id="auth-modal" class="modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h2 id="auth-modal-title">Log In</h2>
-                    <button class="close-modal auth-close-modal">&times;</button>
-                </div>
-                <form class="apply-form" id="auth-form">
-                    <div class="form-group" id="name-group" style="display: none;">
-                        <label>Full Name</label>
-                        <input type="text" id="auth-name" placeholder="John Doe">
-                    </div>
-                    <div class="form-group">
-                        <label>Email Address</label>
-                        <input type="email" required placeholder="john@example.com">
-                    </div>
-                    <div class="form-group">
-                        <label>Password</label>
-                        <input type="password" required placeholder="••••••••">
-                    </div>
-                    <button type="submit" class="btn-primary w-full" id="auth-submit-btn">Log In</button>
-                    <p style="text-align: center; margin-top: 1rem; color: var(--text-muted); font-size: 0.9rem;">
-                        <span id="auth-toggle-text">Don't have an account?</span> 
-                        <a href="#" id="auth-toggle-link" style="color: var(--primary-light); text-decoration: none;">Sign Up</a>
-                    </p>
-                </form>
-            </div>
-        </div>
-
-        <footer class="footer">
-            <div class="footer-content">
-                <div class="footer-logo">love jobs</div>
-                <div class="footer-links">
-                    <a href="#">About</a>
-                    <a href="#">Privacy</a>
-                    <a href="#">Terms</a>
-                    <a href="#">Contact</a>
-                </div>
-                <div class="footer-copyright">© 2026 love jobs. All rights reserved.</div>
-            </div>
-        </footer>
     </div>
-    <script src="main.js"></script>
+
+    <script src="script.js"></script>
 </body>
 </html>
